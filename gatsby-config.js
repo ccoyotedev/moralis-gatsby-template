@@ -25,6 +25,7 @@ module.exports = {
         pages: path.join(__dirname, 'src/pages'),
         assets: path.join(__dirname, 'src/assets'),
         hooks: path.join(__dirname, 'src/hooks'),
+        context: path.join(__dirname, 'src/context'),
       }
     },
     {

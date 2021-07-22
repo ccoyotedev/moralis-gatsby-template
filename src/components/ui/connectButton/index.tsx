@@ -2,23 +2,15 @@ import React,{ useState } from 'react';
 import * as Styled from "./styles";
 import { useAuth } from 'hooks/useAuth';
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon';
-import { smartTrim, networkIdToName, NetworkId } from 'utils';
-import { useWeb3 } from 'hooks/useWeb3';
+import { smartTrim, networkIdToName } from 'utils';
+import { useWeb3 } from "context/Web3Context";
 import { useEffect } from 'react';
 
 export const ConnectButton = () => {
+  const { state: { networkId } } = useWeb3();
   const { currentUser, login, logout } = useAuth();
-  const { web3 } = useWeb3();
   const [ user, setUser ] = useState(currentUser());
   const [ networkName, setNetworkName ] = useState("")
-
-  const getNetworkName = async () => {
-    const res = await web3();
-    const network = await res.eth.net.getId() as NetworkId;
-    const name = networkIdToName[network];
-    setNetworkName(name);
-    return name;
-  }
 
   const handleLogin = async () => {
     await login();
@@ -31,8 +23,10 @@ export const ConnectButton = () => {
   }
 
   useEffect(() => {
-    getNetworkName();
-  }, [])
+    if (networkId) {
+      setNetworkName(networkIdToName[networkId]);
+    }
+  }, [networkId])
 
   if (!user) {
     return (

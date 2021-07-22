@@ -1,7 +1,5 @@
-export type NetworkId = 137;
-
 type IdToName = {
-  [key in NetworkId]: string;
+  [key: number]: string;
 }
 
 export const networkIdToName: IdToName = {
