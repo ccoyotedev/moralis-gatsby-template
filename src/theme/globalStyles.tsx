@@ -69,7 +69,7 @@ const GlobalStyle = createGlobalStyle<{ theme: typeof theme }>`
     font-weight: ${({ theme }): number => theme.font.p.weight};
     margin-bottom: 1.6rem;
 
-    color: ${({ theme }) => theme.colors.text}
+    color: ${({ theme }) => theme.colors.light0}
   }
 
   input,

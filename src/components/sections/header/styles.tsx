@@ -3,20 +3,17 @@ import { styled } from 'theme';
 export const Wrapper = styled.header`
   position: relative;
   width: 100%;
-  background-color: ${({theme}) => theme.colors.dark1};
+  background-color: ${({theme}) => theme.colors.dark0};
   z-index: 100;
-  box-shadow: ${({theme}) => theme.shadow};
-  transition: box-shadow 300ms ease;
-  height: 8rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2.4rem;
+  border-bottom: 1px solid ${({theme}) => theme.colors.dark2};
 
   @media ${({theme}) => theme.mediaQueries.laptop} {
-    padding: 0;
     position: sticky;
     top:0;
-    transition: all 300ms ease;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
   };
 `
